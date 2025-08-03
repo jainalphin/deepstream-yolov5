@@ -1,20 +1,12 @@
-Here’s your README revised for clarity, formatting, and proper DeepStream setup instructions:
-
----
-
 # DeepStream YOLOv5 in Docker
 
 This guide explains how to build and run a Docker container for NVIDIA DeepStream with YOLOv5 integration.
-
----
 
 ## **1. Build the Docker Image**
 
 ```bash
 docker build -t deep_stream .
 ```
-
----
 
 ## **2. Run the Docker Container**
 
@@ -35,8 +27,6 @@ docker run --gpus all -it --rm \
     deepstream-app3
 ```
 
----
-
 ## **3. Inside the Docker Container**
 
 ### **Step 1: Clone Required Repositories**
@@ -45,8 +35,6 @@ docker run --gpus all -it --rm \
 git clone https://github.com/marcoslucianops/DeepStream-Yolo
 git clone https://github.com/ultralytics/yolov5
 ```
-
----
 
 ### **Step 2: Prepare YOLOv5 for WTS/CFG Generation**
 
@@ -94,8 +82,6 @@ git clone https://github.com/ultralytics/yolov5
 
 > **Note:** Make sure you update the number of classes in your `.yaml` file (e.g., set `nc: 2` if you have two classes).
 
----
-
 ### **Step 3: Build YOLO Plugin for DeepStream**
 
 Inside `DeepStream-Yolo`:
@@ -104,26 +90,15 @@ Inside `DeepStream-Yolo`:
 CUDA_VER=11.4 make -C nvdsinfer_custom_impl_Yolo
 ```
 
----
-
 ### **Step 4: Configure DeepStream**
 
 1. Edit **`config_infer_primary_yoloV5.txt`** for your YOLOv5 model (e.g., yolov5s).
-   Example:
-   ![YOLO Config Example](1.png)
 
 2. Update **`deepstream_app_config.txt`** to match your setup.
 
----
 
 ### **Step 5: Run DeepStream**
 
 ```bash
 deepstream-app -c deepstream_app_config.txt
 ```
-
----
-
-✅ You now have YOLOv5 running in NVIDIA DeepStream via Docker.
-
----
